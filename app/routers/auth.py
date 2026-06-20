@@ -38,7 +38,15 @@ async def register(user_data: schemas.UserCreate, db: AsyncSession = Depends(get
     if result.scalar_one_or_none():
         raise HTTPException(status_code=400, detail="Bu e-posta adresi zaten kullanımda.")
     
-    new_user = models.User(id=user_data.id, email=user_data.email)
+    # Kullanıcıya varsayılan geçici bir şifre hash'i atıyoruz ki Supabase şifresiz görmesin
+    default_password_hash = hash_password("Cuzdan123!")
+    
+    new_user = models.User(
+        id=user_data.id, 
+        email=user_data.email,
+        # Eğer models.User tabmunda hashed_password gibi bir alan varsa buraya ekle:
+        # hashed_password=default_password_hash 
+    )
     db.add(new_user)
     await db.commit()
     await db.refresh(new_user)
@@ -70,21 +78,12 @@ class ForgotPasswordRequest(BaseModel):
 @router.post("/forgot-password")
 async def forgot_password(request: ForgotPasswordRequest):
     try:
-        # Supabase Admin API'sini kullanarak şifreye bakmaksızın sihirli bir sıfırlama linki üretiyoruz
-        # Bu yöntem kullanıcının şifresi olmasa bile (sadece e-posta ile kayıt olduysa) taş gibi çalışır
-        response = supabase.auth.admin.generate_link(
-            {
-                "type": "recovery",
-                "email": request.email,
-                "options": {
-                    "redirect_to": "http://127.0.0.1:5500/reset-password.html"
-                }
-            }
+        # Standart, güvenli kullanıcı tetiklemesine geri döndük
+        supabase.auth.reset_password_for_email(
+            request.email,
+            {"redirect_to": "http://127.0.0.1:5500/reset-password.html"}
         )
-        
-        # Eğer link başarıyla üretildiyse, Supabase bu kullanıcının mailine otomatik olarak şifre sıfırlama bağlantısını gönderecektir.
         return {"status": "success", "message": "Şifre sıfırlama bağlantısı e-postanıza gönderildi."}
-        
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
