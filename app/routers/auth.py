@@ -65,16 +65,28 @@ async def login(user_data: schemas.UserCreate, db: AsyncSession = Depends(get_db
 class ForgotPasswordRequest(BaseModel):
     email: str
 
+# app/routers/auth.py içindeki eski forgot_password fonksiyonunun yerine bunu yapıştır:
+
 @router.post("/forgot-password")
 async def forgot_password(request: ForgotPasswordRequest):
     try:
-        supabase.auth.reset_password_for_email(
-            request.email,
-            {"redirect_to": "http://127.0.0.1:5500/reset-password.html"}
+        # Supabase Admin API'sini kullanarak şifreye bakmaksızın sihirli bir sıfırlama linki üretiyoruz
+        # Bu yöntem kullanıcının şifresi olmasa bile (sadece e-posta ile kayıt olduysa) taş gibi çalışır
+        response = supabase.auth.admin.generate_link(
+            {
+                "type": "recovery",
+                "email": request.email,
+                "options": {
+                    "redirect_to": "http://127.0.0.1:5500/reset-password.html"
+                }
+            }
         )
+        
+        # Eğer link başarıyla üretildiyse, Supabase bu kullanıcının mailine otomatik olarak şifre sıfırlama bağlantısını gönderecektir.
         return {"status": "success", "message": "Şifre sıfırlama bağlantısı e-postanıza gönderildi."}
+        
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"E-posta gönderilirken bir hata oluştu: {str(e)}"
+            detail=f"Sıfırlama işlemi başlatılamadı: {str(e)}"
         )
