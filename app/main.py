@@ -37,3 +37,8 @@ def read_root():
         "message": "CüzdanAPP Backend API başarıyla çalışıyor!",
         "version": "1.0.0"
     }
+    
+# CORS middleware tanımının hemen altına ekleyebilirsin:
+@app.options("/{rest_of_path:path}")
+async def preflight_handler():
+    return {"message": "OK"}
