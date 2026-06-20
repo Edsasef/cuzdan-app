@@ -9,13 +9,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# --- CORS AYARLARI ---
+# CORS Ayarları - Tarayıcı engellerini kaldırmak için
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Her yerden gelen (lokal dahil) isteklere izin ver
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # POST, GET, OPTIONS vb. tüm metodlara izin ver
+    allow_headers=["*"],  # Tüm header tiplerine izin ver
 )
 
 # --- ROUTERS (ROTALAR) ---
