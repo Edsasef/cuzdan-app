@@ -29,10 +29,12 @@ async def get_db():
             await session.close()
 
 # --- SUPABASE AUTH / CLIENT ENTEGRASYONU ---
-# settings içinde SUPABASE_URL ve SUPABASE_ANON_KEY tanımlıysa oradan çeker, yoksa DATABASE_URL tabanını dener
-SUPABASE_URL = getattr(settings, "SUPABASE_URL", settings.DATABASE_URL.split("@")[1].split(":")[0] if "@" in settings.DATABASE_URL else "")
-# Eğer ayarlarda yoksa buraya doğrudan Supabase panelindeki url ve anon_key'ini tırnak içinde gömebilirsin.
-SUPABASE_KEY = getattr(settings, "SUPABASE_ANON_KEY", "SENIN_SUPABASE_ANON_KEYIN")
+# O alandaki her şeyi sil ve YERİNE SADECE BU 4 SATIRI YAPIŞTIR:
+
+SUPABASE_URL = "https://psoqdrasppeugrslphdx.supabase.co"
+SUPABASE_KEY = "sb_publishable_kRdd3_Op6eFgOETkbs7bMw_kDOQx..." # Supabase panelinden kopyaladığın o uzun anahtarı buraya yapıştır
+
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 if not SUPABASE_URL.startswith("http"):
     # Eğer url otomatik ayıklanamadıysa temiz bir fallback
