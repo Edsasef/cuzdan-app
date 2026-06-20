@@ -122,13 +122,16 @@
             button.disabled = true;
             button.innerHTML = 'Hesap Oluşturuluyor...';
 
+            // Butona basıldığı an tarayıcıya rastgele, benzersiz bir UUID ürettiriyoruz
+            const randomId = crypto.randomUUID();
+
             try {
                 const response = await fetch('https://cuzdan-finans.vercel.app/auth/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         email: email,
-                        id: "test-user-id-123" // Backend'in beklediği string id alanı
+                        id: randomId // Her seferinde otomatik değişen benzersiz ID
                     })
                 });
 

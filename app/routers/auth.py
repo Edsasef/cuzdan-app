@@ -7,6 +7,8 @@ from datetime import datetime, timedelta
 from app.database import get_db
 from app.config import settings
 from app import models, schemas
+from pydantic import BaseModel
+from app.database import supabase
 
 router = APIRouter(
     prefix="/auth",
@@ -94,3 +96,25 @@ async def login(user_data: schemas.UserCreate, db: AsyncSession = Depends(get_db
         "access_token": access_token,
         "token_type": "bearer"
     }
+    
+router = APIRouter(prefix="/auth", tags=["Authentication"])
+
+class ForgotPasswordRequest(BaseModel):
+    email: str
+
+@router.post("/forgot-password")
+async def forgot_password(request: ForgotPasswordRequest):
+    try:
+        # Supabase'e şifre sıfırlama maili göndermesini söylüyoruz
+        # redirectTo: Kullanıcı maildeki linke tıklayınca bizim açacağımız yeni şifre sayfasına gidecek
+        response = supabase.auth.reset_password_for_email(
+            request.email,
+            {"redirect_to": "http://127.0.0.1:5500/reset-password.html"}
+        )
+        return {"status": "success", "message": "Şifre sıfırlama bağlantısı e-postanıza gönderildi."}
+    
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"E-posta gönderilirken bir hata oluştu: {str(e)}"
+        )

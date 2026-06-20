@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,90 +20,109 @@
         }
     </script>
 </head>
+
 <body class="bg-darkbg min-h-screen font-sans text-slate-200 flex flex-col">
-    <div id="toastContainer" class="fixed top-5 right-5 z-50 space-y-3 pointer-events-none"></div>
+
     <nav class="bg-darkcard border-b border-slate-800 px-6 py-4 flex justify-between items-center w-full z-10">
         <div class="flex items-center gap-3">
             <div class="text-sky-400">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6A2.25 2.25 0 0 1 18.75 20H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6A2.25 2.25 0 0 1 18.75 20H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3" />
                 </svg>
             </div>
             <span class="text-lg font-black text-white tracking-wider font-mono">CÜZDAN FİNANS</span>
         </div>
-        
+
         <div class="flex items-center gap-5">
             <div class="flex items-center gap-2">
                 <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                <span id="userFullName" class="text-sm text-slate-300 font-semibold tracking-wide">Berke Tosunbayraktar</span>
+                <span id="userFullName" class="text-sm text-slate-300 font-semibold tracking-wide">Berke
+                    Tosunbayraktar</span>
             </div>
-            <button id="logoutBtn" class="bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all">
+            <button id="logoutBtn"
+                class="bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all">
                 Çıkış Yap
             </button>
         </div>
     </nav>
 
     <div class="flex flex-1 w-full">
-        
+
         <aside class="w-64 bg-darkcard border-r border-slate-800 p-4 flex flex-col justify-between hidden md:flex">
             <div class="space-y-2">
                 <p class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">Menü</p>
-                
-                <a href="#" class="flex items-center gap-3 px-3 py-2.5 bg-sky-500/10 text-sky-400 rounded-xl text-sm font-medium border border-sky-500/10 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+
+                <a href="#"
+                    class="flex items-center gap-3 px-3 py-2.5 bg-sky-500/10 text-sky-400 rounded-xl text-sm font-medium border border-sky-500/10 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                     </svg>
                     Ana Panel
                 </a>
 
-                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-slate-800/40 rounded-xl text-sm font-medium transition-all group">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-slate-500 group-hover:text-white">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6A2.25 2.25 0 0118.75 20H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" />
+                <a href="#"
+                    class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-slate-800/40 rounded-xl text-sm font-medium transition-all group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5 text-slate-500 group-hover:text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6A2.25 2.25 0 0118.75 20H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" />
                     </svg>
                     Cüzdanlarım
                 </a>
 
-                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-slate-800/40 rounded-xl text-sm font-medium transition-all group">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-slate-500 group-hover:text-white">
+                <a href="#"
+                    class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-slate-800/40 rounded-xl text-sm font-medium transition-all group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5 text-slate-500 group-hover:text-white">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
                     </svg>
                     Analiz Raporları
                 </a>
 
-                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-slate-800/40 rounded-xl text-sm font-medium transition-all group">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-slate-500 group-hover:text-white">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.43l-1.003.767c-.304.233-.434.623-.377 1.003.004.032.006.065.006.098 0 .032-.002.065-.006.098-.057.38.073.77.377 1.003l1.003.767a1.125 1.125 0 01.26 1.43l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.216-.456a1.125 1.125 0 00-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281a1.125 1.125 0 00-.645-.87a6.52 6.52 0 01-.22-.127a1.125 1.125 0 00-1.075-.124l-1.217.456a1.125 1.125 0 01-1.37-.49l-1.296-2.247a1.125 1.125 0 01.26-1.43l1.003-.767c.304-.233.434-.623.377-1.003a3.456 3.456 0 01-.006-.196c.057-.38-.073-.77-.377-1.003l-1.003-.767a1.125 1.125 0 01-.26-1.43l1.296-2.247a1.125 1.125 0 011.37-.49l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128c.332-.183.582-.495.644-.869l.214-1.28z" />
+                <a href="#"
+                    class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-slate-800/40 rounded-xl text-sm font-medium transition-all group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5 text-slate-500 group-hover:text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.43l-1.003.767c-.304.233-.434.623-.377 1.003.004.032.006.065.006.098 0 .032-.002.065-.006.098-.057.38.073.77.377 1.003l1.003.767a1.125 1.125 0 01.26 1.43l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.216-.456a1.125 1.125 0 00-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281a1.125 1.125 0 00-.645-.87a6.52 6.52 0 01-.22-.127a1.125 1.125 0 00-1.075-.124l-1.217.456a1.125 1.125 0 01-1.37-.49l-1.296-2.247a1.125 1.125 0 01.26-1.43l1.003-.767c.304-.233.434-.623.377-1.003a3.456 3.456 0 01-.006-.196c.057-.38-.073-.77-.377-1.003l-1.003-.767a1.125 1.125 0 01-.26-1.43l1.296-2.247a1.125 1.125 0 011.37-.49l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128c.332-.183.582-.495.644-.869l.214-1.28z" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     Ayarlar
                 </a>
             </div>
-            
+
             <div class="text-xs text-slate-600 text-center border-t border-slate-800/60 pt-3">
                 v1.0.0 © 2026
             </div>
         </aside>
 
         <main class="flex-1 p-6 space-y-6 overflow-y-auto max-w-6xl">
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-darkcard border border-slate-800 p-6 rounded-2xl shadow-xl">
                     <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Toplam Bakiye</p>
                     <h3 id="totalBalance" class="text-3xl font-bold text-white">0.00 ₺</h3>
                 </div>
                 <div class="bg-darkcard border border-slate-800 p-6 rounded-2xl shadow-xl">
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1 text-emerald-400">Aylık Gelir</p>
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1 text-emerald-400">Aylık
+                        Gelir</p>
                     <h3 id="totalIncome" class="text-3xl font-bold text-emerald-400">+0.00 ₺</h3>
                 </div>
                 <div class="bg-darkcard border border-slate-800 p-6 rounded-2xl shadow-xl">
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1 text-rose-400">Aylık Gider</p>
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1 text-rose-400">Aylık
+                        Gider</p>
                     <h3 id="totalExpense" class="text-3xl font-bold text-rose-400">-0.00 ₺</h3>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                
+
                 <div class="bg-darkcard border border-slate-800 p-6 rounded-2xl h-fit">
                     <h4 class="text-md font-bold text-white mb-4 flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-sky-400"></span> Yeni İşlem Ekle
@@ -110,22 +130,24 @@
                     <form id="transactionForm" class="space-y-4">
                         <div>
                             <label class="block text-xs text-slate-400 mb-1.5 font-medium">Açıklama</label>
-                            <input type="text" id="description" required placeholder="Örn: Market Alışverişi" 
+                            <input type="text" id="description" required placeholder="Örn: Market Alışverişi"
                                 class="w-full bg-darkbg border border-slate-700 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 text-sm">
                         </div>
                         <div>
                             <label class="block text-xs text-slate-400 mb-1.5 font-medium">Miktar (₺)</label>
-                            <input type="number" step="0.01" id="amount" required placeholder="0.00" 
+                            <input type="number" step="0.01" id="amount" required placeholder="0.00"
                                 class="w-full bg-darkbg border border-slate-700 rounded-xl px-4 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 text-sm">
                         </div>
                         <div>
                             <label class="block text-xs text-slate-400 mb-1.5 font-medium">İşlem Türü</label>
-                            <select id="type" class="w-full bg-darkbg border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-sky-500 text-sm">
+                            <select id="type"
+                                class="w-full bg-darkbg border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-sky-500 text-sm">
                                 <option value="expense">Gider (Para Çıkışı)</option>
                                 <option value="income">Gelir (Para Girişi)</option>
                             </select>
                         </div>
-                        <button type="submit" class="w-full bg-white hover:bg-slate-100 text-slate-950 font-bold py-2.5 px-4 rounded-xl transition-all text-sm mt-2">
+                        <button type="submit"
+                            class="w-full bg-white hover:bg-slate-100 text-slate-950 font-bold py-2.5 px-4 rounded-xl transition-all text-sm mt-2">
                             İşlemi Kaydet
                         </button>
                     </form>
@@ -146,7 +168,8 @@
                             </thead>
                             <tbody id="transactionList" class="divide-y divide-slate-800/50">
                                 <tr id="emptyRow">
-                                    <td colspan="3" class="py-8 text-center text-slate-500 text-xs">Henüz bir işlem eklenmedi.</td>
+                                    <td colspan="3" class="py-8 text-center text-slate-500 text-xs">Henüz bir işlem
+                                        eklenmedi.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -158,17 +181,27 @@
     </div>
 
     <script>
+        // 1. Güvenlik Kontrolü
         const token = localStorage.getItem('token');
+        const userEmail = localStorage.getItem('userEmail'); // Hafızadaki e-postayı çekiyoruz
+
         if (!token) {
             window.location.href = 'index.html';
         }
 
+        // 2. Sağ üst köşedeki ismi/e-postayı dinamik olarak değiştirme
+        if (userEmail) {
+            // E-postanın sadece @ işaretine kadar olan kısmını almak istersen: userEmail.split('@')[0] yapabilirsin
+            document.getElementById('userFullName').innerText = userEmail;
+        }
+
+        // 3. Çıkış Yapıldığında Hafızayı Temizleme
         document.getElementById('logoutBtn').addEventListener('click', () => {
             localStorage.removeItem('token');
+            localStorage.removeItem('userEmail'); // E-postayı da siliyoruz
             window.location.href = 'index.html';
         });
-
-        // İleride buraya Vercel API'den gelen gerçek ismi yazdıracağız.
     </script>
 </body>
+
 </html>
