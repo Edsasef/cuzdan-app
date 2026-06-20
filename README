@@ -1,0 +1,1 @@
+sunucuyu çalıştırmak için: uvicorn app.main:app --reload

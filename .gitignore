@@ -1,0 +1,14 @@
+# Sanal ortam klasörünü engelle (Boyutu büyüten yer burası)
+venv/
+.venv/
+env/
+
+# Python'ın arka planda ürettiği geçici dosyaları engelle
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Gizli şifrelerin olduğu .env dosyasını canlıya gönderme (Vercel panelinden elle gireceğiz)
+.env
